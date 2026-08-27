@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER hog_version_rom
+	OPTION supported_peripherals = (hog_version_rom);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = hog_version_rom;
+END DRIVER
