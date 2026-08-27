@@ -3,35 +3,7 @@
 
 module hog_version_rom #(
     // Users to add parameters here
-    // Global Generic Variables
-    parameter GLOBAL_DATE = 0,
-    parameter GLOBAL_TIME = 0,
-    parameter GLOBAL_VER  = 0,
-    parameter GLOBAL_SHA  = 0,
 
-    parameter TOP_SHA = 0,
-    parameter TOP_VER = 0,
-
-    parameter CON_SHA = 0,
-    parameter CON_VER = 0,
-
-    parameter HOG_SHA = 0,
-    parameter HOG_VER = 0,
-
-    // Optional IPBus xml
-    parameter XML_SHA = 0,
-    parameter XML_VER = 0,
-
-    // Project Specific Lists (One for each .src file in your Top/myproj/list folder)
-    parameter MYLIB0_VER = 0,
-    parameter MYLIB0_SHA = 0,
-    parameter MYLIB1_VER = 0,
-    parameter MYLIB1_SHA = 0,
-
-    // External library specific variables (only if you have an external library)
-    parameter MYEXTLIB_SHA = 0,
-    // Project flavour
-    parameter FLAVOUR      = 0,
     // User parameters ends
     // Do not modify the parameters beyond this line
 
@@ -41,6 +13,34 @@ module hog_version_rom #(
     parameter integer C_S00_AXI_ADDR_WIDTH = 7
 ) (
     // Users to add ports here
+    input wire [31 : 0] global_date,
+    input wire [31 : 0] global_time,
+    input wire [31 : 0] global_ver,
+    input wire [31 : 0] global_sha,
+
+    input wire [31 : 0] top_sha,
+    input wire [31 : 0] top_ver,
+
+    input wire [31 : 0] con_sha,
+    input wire [31 : 0] con_ver,
+
+    input wire [31 : 0] hog_sha,
+    input wire [31 : 0] hog_ver,
+
+    // Optional IPBus xml
+    input wire [31 : 0] xml_sha,
+    input wire [31 : 0] xml_ver,
+
+    // Project Specific Lists (One for each .src file in your Top/myproj/list folder)
+    input wire [31 : 0] mylib0_ver,
+    input wire [31 : 0] mylib0_sha,
+    input wire [31 : 0] mylib1_ver,
+    input wire [31 : 0] mylib1_sha,
+
+    // External library specific variables (only if you have an external library)
+    input wire [31 : 0] myextlib_sha,
+    // Project flavour
+    input wire [31 : 0] flavour,
 
     // User ports ends
     // Do not modify the ports beyond this line

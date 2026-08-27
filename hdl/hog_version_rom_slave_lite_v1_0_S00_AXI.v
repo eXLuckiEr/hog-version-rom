@@ -3,35 +3,7 @@
 
 module hog_version_rom_slave_lite_v1_0_S00_AXI #(
     // Users to add parameters here
-    // Global Generic Variables
-    parameter GLOBAL_DATE = 0,
-    parameter GLOBAL_TIME = 0,
-    parameter GLOBAL_VER  = 0,
-    parameter GLOBAL_SHA  = 0,
 
-    parameter TOP_SHA = 0,
-    parameter TOP_VER = 0,
-
-    parameter CON_SHA = 0,
-    parameter CON_VER = 0,
-
-    parameter HOG_SHA = 0,
-    parameter HOG_VER = 0,
-
-    // Optional IPBus xml
-    parameter XML_SHA = 0,
-    parameter XML_VER = 0,
-
-    // Project Specific Lists (One for each .src file in your Top/myproj/list folder)
-    parameter MYLIB0_VER = 0,
-    parameter MYLIB0_SHA = 0,
-    parameter MYLIB1_VER = 0,
-    parameter MYLIB1_SHA = 0,
-
-    // External library specific variables (only if you have an external library)
-    parameter MYEXTLIB_SHA = 0,
-    // Project flavour
-    parameter FLAVOUR      = 0,
     // User parameters ends
     // Do not modify the parameters beyond this line
 
@@ -41,6 +13,34 @@ module hog_version_rom_slave_lite_v1_0_S00_AXI #(
     parameter integer C_S_AXI_ADDR_WIDTH = 7
 ) (
     // Users to add ports here
+    input wire [31 : 0] global_date,
+    input wire [31 : 0] global_time,
+    input wire [31 : 0] global_ver,
+    input wire [31 : 0] global_sha,
+
+    input wire [31 : 0] top_sha,
+    input wire [31 : 0] top_ver,
+
+    input wire [31 : 0] con_sha,
+    input wire [31 : 0] con_ver,
+
+    input wire [31 : 0] hog_sha,
+    input wire [31 : 0] hog_ver,
+
+    // Optional IPBus xml
+    input wire [31 : 0] xml_sha,
+    input wire [31 : 0] xml_ver,
+
+    // Project Specific Lists (One for each .src file in your Top/myproj/list folder)
+    input wire [31 : 0] mylib0_ver,
+    input wire [31 : 0] mylib0_sha,
+    input wire [31 : 0] mylib1_ver,
+    input wire [31 : 0] mylib1_sha,
+
+    // External library specific variables (only if you have an external library)
+    input wire [31 : 0] myextlib_sha,
+    // Project flavour
+    input wire [31 : 0] flavour,
 
     // User ports ends
     // Do not modify the ports beyond this line
@@ -129,24 +129,24 @@ module hog_version_rom_slave_lite_v1_0_S00_AXI #(
     //-- Signals for user logic register space example
     //------------------------------------------------
     //-- Number of Slave Registers 18
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg0;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg1;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg2;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg3;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg4;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg5;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg6;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg7;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg8;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg9;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg10;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg11;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg12;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg13;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg14;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg15;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg16;
-    wire     [C_S_AXI_DATA_WIDTH-1:0] slv_reg17;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg0;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg1;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg2;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg3;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg4;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg5;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg6;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg7;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg8;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg9;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg10;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg11;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg12;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg13;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg14;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg15;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg16;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg17;
     integer                          byte_index;
 
     // I/O Connections assignments
@@ -221,24 +221,24 @@ module hog_version_rom_slave_lite_v1_0_S00_AXI #(
     end
 
     // Implement readonly registers
-    assign slv_reg0  = GLOBAL_DATE;
-    assign slv_reg1  = GLOBAL_TIME;
-    assign slv_reg2  = GLOBAL_VER;
-    assign slv_reg3  = GLOBAL_SHA;
-    assign slv_reg4  = TOP_SHA;
-    assign slv_reg5  = TOP_VER;
-    assign slv_reg6  = CON_SHA;
-    assign slv_reg7  = CON_VER;
-    assign slv_reg8  = HOG_SHA;
-    assign slv_reg9  = HOG_VER;
-    assign slv_reg10 = XML_SHA;
-    assign slv_reg11 = XML_VER;
-    assign slv_reg12 = MYLIB0_VER;
-    assign slv_reg13 = MYLIB0_SHA;
-    assign slv_reg14 = MYLIB1_VER;
-    assign slv_reg15 = MYLIB1_SHA;
-    assign slv_reg16 = MYEXTLIB_SHA;
-    assign slv_reg17 = FLAVOUR;
+    assign slv_reg0  = global_date;
+    assign slv_reg1  = global_time;
+    assign slv_reg2  = global_ver;
+    assign slv_reg3  = global_sha;
+    assign slv_reg4  = top_sha;
+    assign slv_reg5  = top_ver;
+    assign slv_reg6  = con_sha;
+    assign slv_reg7  = con_ver;
+    assign slv_reg8  = hog_sha;
+    assign slv_reg9  = hog_ver;
+    assign slv_reg10 = xml_sha;
+    assign slv_reg11 = xml_ver;
+    assign slv_reg12 = mylib0_ver;
+    assign slv_reg13 = mylib0_sha;
+    assign slv_reg14 = mylib1_ver;
+    assign slv_reg15 = mylib1_sha;
+    assign slv_reg16 = myextlib_sha;
+    assign slv_reg17 = flavour;
 
     // Implement read state machine
     always @(posedge S_AXI_ACLK) begin
