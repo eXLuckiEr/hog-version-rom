@@ -3,7 +3,7 @@
   <spirit:vendor>github.com</spirit:vendor>
   <spirit:library>eXLuckiEr</spirit:library>
   <spirit:name>hog_version_rom</spirit:name>
-  <spirit:version>1.0</spirit:version>
+  <spirit:version>1.2</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>S00_AXI</spirit:name>
@@ -266,7 +266,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>5f4a32cf</spirit:value>
+            <spirit:value>61441f18</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -282,7 +282,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>5f4a32cf</spirit:value>
+            <spirit:value>61441f18</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -310,7 +310,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>be0c4013</spirit:value>
+            <spirit:value>0e5443b4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -336,6 +336,21 @@
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
             <spirit:value>c45af94e</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_testbench</spirit:name>
+        <spirit:displayName>Test Bench</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation.testbench</spirit:envIdentifier>
+        <spirit:modelName>hog_version_rom_tb</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_testbench_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>beb78841</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -994,11 +1009,13 @@
       <spirit:file>
         <spirit:name>hdl/hog_version_rom_slave_lite_v1_0_S00_AXI.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>work</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/hog_version_rom.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_e994aea9</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_ff665644</spirit:userFileType>
+        <spirit:logicalName>work</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1006,10 +1023,12 @@
       <spirit:file>
         <spirit:name>hdl/hog_version_rom_slave_lite_v1_0_S00_AXI.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>work</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>hdl/hog_version_rom.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:logicalName>work</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1047,9 +1066,9 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/hog_version_rom_v1_0.tcl</spirit:name>
+        <spirit:name>xgui/hog_version_rom_v1_2.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_e1fe75d3</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_0e5443b4</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1058,6 +1077,21 @@
       <spirit:file>
         <spirit:name>bd/bd.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_testbench_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/hog_version_rom_tb.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_testbench</spirit:userFileType>
+        <spirit:logicalName>work</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../../cerhub-zynq/projects/cerhub-rk-zynq7020-f/cerhub-rk-zynq7020-f.tmp/hog_version_rom_v1_2_project/hog_version_rom_tb_behav.wcfg</spirit:name>
+        <spirit:fileType>unknown</spirit:fileType>
+        <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
@@ -1127,17 +1161,19 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>Hog version ROM</xilinx:displayName>
-      <xilinx:coreRevision>6</xilinx:coreRevision>
+      <xilinx:coreRevision>7</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>github.com:Hog:hog_version_rom:1.0</xilinx:canUpgradeFrom>
+        <xilinx:canUpgradeFrom>github.com:eXLuckiEr:hog_version_rom:1.0</xilinx:canUpgradeFrom>
+        <xilinx:canUpgradeFrom>github.com:eXLuckiEr:hog_version_rom:1.1</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2026-08-27T16:26:49Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-09-01T14:06:39Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2024.2.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="ecd7752a"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="a3272a97"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="e9a169e0"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="1638a20d"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="a0a6f17f"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="02d3ece9"/>

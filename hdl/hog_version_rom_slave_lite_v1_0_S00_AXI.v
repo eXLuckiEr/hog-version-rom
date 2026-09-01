@@ -3,7 +3,7 @@
 
 module hog_version_rom_slave_lite_v1_0_S00_AXI #(
     // Users to add parameters here
-
+    localparam reg [56:0] sim_dna_value = 57'hDEAD_BEEF,
     // User parameters ends
     // Do not modify the parameters beyond this line
 
@@ -147,6 +147,8 @@ module hog_version_rom_slave_lite_v1_0_S00_AXI #(
     wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg15;
     wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg16;
     wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg17;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg18;
+    wire    [C_S_AXI_DATA_WIDTH-1:0] slv_reg19;
     integer                          byte_index;
 
     // I/O Connections assignments
@@ -220,25 +222,28 @@ module hog_version_rom_slave_lite_v1_0_S00_AXI #(
         end
     end
 
+    reg [63:0] device_dna_reg;
+
     // Implement readonly registers
-    assign slv_reg0  = global_date;
-    assign slv_reg1  = global_time;
-    assign slv_reg2  = global_ver;
-    assign slv_reg3  = global_sha;
-    assign slv_reg4  = top_sha;
-    assign slv_reg5  = top_ver;
-    assign slv_reg6  = con_sha;
-    assign slv_reg7  = con_ver;
-    assign slv_reg8  = hog_sha;
-    assign slv_reg9  = hog_ver;
-    assign slv_reg10 = xml_sha;
-    assign slv_reg11 = xml_ver;
-    assign slv_reg12 = mylib0_ver;
-    assign slv_reg13 = mylib0_sha;
-    assign slv_reg14 = mylib1_ver;
-    assign slv_reg15 = mylib1_sha;
-    assign slv_reg16 = myextlib_sha;
-    assign slv_reg17 = flavour;
+    assign slv_reg0               = global_date;
+    assign slv_reg1               = global_time;
+    assign slv_reg2               = global_ver;
+    assign slv_reg3               = global_sha;
+    assign slv_reg4               = top_sha;
+    assign slv_reg5               = top_ver;
+    assign slv_reg6               = con_sha;
+    assign slv_reg7               = con_ver;
+    assign slv_reg8               = hog_sha;
+    assign slv_reg9               = hog_ver;
+    assign slv_reg10              = xml_sha;
+    assign slv_reg11              = xml_ver;
+    assign slv_reg12              = mylib0_ver;
+    assign slv_reg13              = mylib0_sha;
+    assign slv_reg14              = mylib1_ver;
+    assign slv_reg15              = mylib1_sha;
+    assign slv_reg16              = myextlib_sha;
+    assign slv_reg17              = flavour;
+    assign {slv_reg19, slv_reg18} = device_dna_reg;
 
     // Implement read state machine
     always @(posedge S_AXI_ACLK) begin
@@ -282,9 +287,73 @@ module hog_version_rom_slave_lite_v1_0_S00_AXI #(
         end
     end
     // Implement memory mapped register select and read logic generation
-    assign S_AXI_RDATA = (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h0) ? slv_reg0 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h1) ? slv_reg1 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h2) ? slv_reg2 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h3) ? slv_reg3 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h4) ? slv_reg4 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h5) ? slv_reg5 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h6) ? slv_reg6 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h7) ? slv_reg7 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h8) ? slv_reg8 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h9) ? slv_reg9 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hA) ? slv_reg10 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hB) ? slv_reg11 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hC) ? slv_reg12 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hD) ? slv_reg13 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hE) ? slv_reg14 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hF) ? slv_reg15 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h10) ? slv_reg16 : (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h11) ? slv_reg17 : 0;
-    // Add user logic here
+    assign S_AXI_RDATA = (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h0) ? slv_reg0 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h1) ? slv_reg1 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h2) ? slv_reg2 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h3) ? slv_reg3 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h4) ? slv_reg4 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h5) ? slv_reg5 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h6) ? slv_reg6 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h7) ? slv_reg7 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h8) ? slv_reg8 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h9) ? slv_reg9 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hA) ? slv_reg10 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hB) ? slv_reg11 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hC) ? slv_reg12 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hD) ? slv_reg13 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hE) ? slv_reg14 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'hF) ? slv_reg15 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h10) ? slv_reg16 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h11) ? slv_reg17 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h12) ? slv_reg18 :
+                         (axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] == 5'h13) ? slv_reg19 : 0;
 
+    // Add user logic here
+    wire       dout;
+    reg        din;
+    reg        re;
+    reg        shift;
+
+    reg  [5:0] dna_cnt;
+
+    DNA_PORT #(
+        .SIM_DNA_VALUE(57'h1A5_CAFE_DEAD_BEEF)  // Specifies a sample 57-bit DNA value for simulation
+    ) DNA_PORT_inst (
+        .DOUT (dout),        // 1-bit output: DNA output data.
+        .CLK  (S_AXI_ACLK),  // 1-bit input: Clock input.
+        .DIN  (din),         // 1-bit input: User data input pin.
+        .READ (re),          // 1-bit input: Active high load DNA, active low read input.
+        .SHIFT(shift)        // 1-bit input: Active high shift enable input.
+    );
+
+    always @(posedge S_AXI_ACLK) begin
+        if (S_AXI_ARESETN == 1'b0) begin
+            dna_cnt        <= 6'h0;
+            re             <= 1'b0;
+            shift          <= 1'b0;
+            din            <= 1'b0;
+            device_dna_reg <= 64'h0;
+        end
+        else begin
+
+            /*    0 1 2 3 4 5 6 ... 55 56 57 58 59 */
+            /* RE 0 1 0 0 0 0 0 ... 0  0  0  0  0  */
+            /* SH 0 0 1 1 1 1 1 ... 1  1  0  0  0  */
+            /* DO 0 0 X X X X X ... X  X  X  X  0  */
+
+            re    <= (dna_cnt == 6'd0);
+            shift <= (dna_cnt >= 6'd1) && (dna_cnt < 6'd57);
+
+            if (dna_cnt > 6'd1 && dna_cnt <= 6'd58) begin
+                device_dna_reg <= {device_dna_reg[62:0], dout};
+            end
+
+            if (dna_cnt <= 6'd58) begin
+                dna_cnt <= dna_cnt + 6'd1;
+            end
+        end
+    end
     // User logic ends
+
 
 endmodule

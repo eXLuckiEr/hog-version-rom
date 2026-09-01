@@ -74,6 +74,26 @@ module hog_version_rom #(
         .C_S_AXI_DATA_WIDTH(C_S00_AXI_DATA_WIDTH),
         .C_S_AXI_ADDR_WIDTH(C_S00_AXI_ADDR_WIDTH)
     ) hog_version_rom_slave_lite_v1_0_S00_AXI_inst (
+
+        .global_date (global_date),
+        .global_time (global_time),
+        .global_ver  (global_ver),
+        .global_sha  (global_sha),
+        .top_sha     (top_sha),
+        .top_ver     (top_ver),
+        .con_sha     (con_sha),
+        .con_ver     (con_ver),
+        .hog_sha     (hog_sha),
+        .hog_ver     (hog_ver),
+        .xml_sha     (xml_sha),
+        .xml_ver     (xml_ver),
+        .mylib0_ver  (mylib0_ver),
+        .mylib0_sha  (mylib0_sha),
+        .mylib1_ver  (mylib1_ver),
+        .mylib1_sha  (mylib1_sha),
+        .myextlib_sha(myextlib_sha),
+        .flavour     (flavour),
+
         .S_AXI_ACLK   (s00_axi_aclk),
         .S_AXI_ARESETN(s00_axi_aresetn),
         .S_AXI_AWADDR (s00_axi_awaddr),
