@@ -1,6 +1,6 @@
 # HoG Version ROM (hog-version-rom)
 
-An AXI4-Lite IP core for Xilinx Zynq-7000 SoC that exposes the build-time version and identity metadata of a **HoG (HDL-on-git)** hardware build to software running on the ARM (PS) side.
+An AXI4-Lite IP core for Xilinx Zynq-7000 SoC that exposes the build-time version and identity metadata of a [HoG (HDL-on-git)](https://github.com/Hog-CERN/Hog) hardware build to software running on the ARM (PS) side.
 
 The core acts as a memory-mapped read-only register block: every register is driven directly by signals that the HoG flow injects at synthesis time (build date, commit SHA-1, per-module version tags, project flavour, and the Zynq device DNA). No write logic is implemented -- the software side only ever performs 32-bit reads against the mapped address range.
 
@@ -118,4 +118,4 @@ hog-version-rom/
 
 ## License
 
-Copyright (c) 2025. Xilinx, Inc. -- see the source file headers for the full Xilinx proprietary license text.
+Distributed under the Apache License, Version 2.0.
