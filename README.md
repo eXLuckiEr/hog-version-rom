@@ -13,7 +13,7 @@ This IP closes that gap by:
 - Exposing the **global HoG build metadata** (date, time, version, SHA-1) as readable registers.
 - Exposing **per-module provenance** -- the version tag and SHA-1 of the top-level module, the constraint set, the HoG library, any IP-bus XML, and up to two project-specific source lists.
 - Exposing the **project flavour** tag.
-- Exposing the **64-bit Zynq device DNA** (read out via the Xilinx `DNA_PORT` primitive at power-on), which allows the OS to positively identify the physical board and cross-check it against the expected build.
+- Exposing the **57-bit Zynq device DNA** (read out via the Xilinx `DNA_PORT` primitive at power-on), which allows the OS to positively identify the physical board and cross-check it against the expected build.
 
 A small Linux driver or a bare-metal routine can then query the hardware at boot time and compare the reported values against the manifest of the software image currently in use.
 
@@ -48,7 +48,7 @@ All registers are 32-bit wide, little-endian, and **read-only**. Offsets are rel
 
 ### Device DNA
 
-The 64-bit DNA value is read out of the Xilinx `DNA_PORT` primitive during power-on (a 59-cycle shift sequence on `S_AXI_ACLK`) and latched into the `device_dna_lo` / `device_dna_hi` register pair. In simulation the primitive returns the value of the `SIM_DNA_VALUE` local parameter (default `57'hDEAD_BEEF`), so the DNA registers will read as that value in a simulator.
+The 57-bit DNA value is read out of the Xilinx `DNA_PORT` primitive during power-on (a 59-cycle shift sequence on `S_AXI_ACLK`) and latched into the `device_dna_lo` / `device_dna_hi` register pair. In simulation the primitive returns the value of the `SIM_DNA_VALUE` local parameter (default `57'hDEAD_BEEF`), so the DNA registers will read as that value in a simulator.
 
 ## Parameters and ports
 
