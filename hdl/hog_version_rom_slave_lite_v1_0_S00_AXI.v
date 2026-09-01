@@ -3,7 +3,7 @@
 
 module hog_version_rom_slave_lite_v1_0_S00_AXI #(
     // Users to add parameters here
-    localparam reg [56:0] sim_dna_value = 57'hDEAD_BEEF,
+    localparam reg [56:0] sim_dna_value = 57'h1A5_CAFE_DEAD_BEEF,
     // User parameters ends
     // Do not modify the parameters beyond this line
 
@@ -317,7 +317,7 @@ module hog_version_rom_slave_lite_v1_0_S00_AXI #(
     reg  [5:0] dna_cnt;
 
     DNA_PORT #(
-        .SIM_DNA_VALUE(57'h1A5_CAFE_DEAD_BEEF)  // Specifies a sample 57-bit DNA value for simulation
+        .SIM_DNA_VALUE(sim_dna_value)  // Specifies a sample 57-bit DNA value for simulation
     ) DNA_PORT_inst (
         .DOUT (dout),        // 1-bit output: DNA output data.
         .CLK  (S_AXI_ACLK),  // 1-bit input: Clock input.
