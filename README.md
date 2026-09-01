@@ -97,7 +97,6 @@ A minimal Xilinx C driver is provided under `drivers/hog_version_rom_v1_0/`:
 ```
 hog-version-rom/
 |-- hdl/                          RTL source
-|   |-- DNA_PORT.v                Xilinx DNA read-out primitive
 |   |-- hog_version_rom_v1_0.v    Top-level IP wrapper
 |   `-- hog_version_rom_slave_lite_v1_0_S00_AXI.v   AXI4-Lite slave + register file
 |-- drivers/                      Xilinx C driver
